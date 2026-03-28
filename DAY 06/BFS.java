@@ -1,52 +1,105 @@
-import java.util.*;
+class Node {
+    int data;
+    Node next;
 
-class BFS {
-    private int vertices;
-    private List<List<Integer>> adjList;
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
 
-    public BFS(int v) {
-        vertices = v;
-        adjList = new ArrayList<>();
+class Queue {
+    Node front, rear;
 
-        for (int i = 0; i < v; i++) {
-            adjList.add(new ArrayList<>());
+    public void enqueue(int data) {
+        Node node = new Node(data);
+
+        if (rear == null) {
+            front = rear = node;
+            return;
         }
+
+        rear.next = node;
+        rear = node;
     }
 
-    void addEdge(int src, int dest) {
-        adjList.get(src).add(dest);
+    public int dequeue() {
+        if (front == null) {
+            return -1;
+        }
+
+        int value = front.data;
+        front = front.next;
+
+        if (front == null) {
+            rear = null;
+        }
+
+        return value;
     }
 
-    void bfs(int start) {
+    public boolean isEmpty() {
+        return front == null;
+    }
+}
+
+public class BFS {
+    int vertices;
+    Node[] adjList;
+
+    public BFS(int vertices) {
+        this.vertices = vertices;
+        adjList = new Node[vertices];
+    }
+
+    public void addEdge(int u, int v) {
+        Node node = new Node(v);
+        node.next = adjList[u];
+        adjList[u] = node;
+
+        node = new Node(u);
+        node.next = adjList[v];
+        adjList[v] = node;
+    }
+
+    public void bfs(int start) {
         boolean[] visited = new boolean[vertices];
-        Queue<Integer> queue = new LinkedList<>();
+
+        Queue queue = new Queue();
 
         visited[start] = true;
-        queue.offer(start);
+        queue.enqueue(start);
+
+        System.out.print("BFS Traversal: ");
 
         while (!queue.isEmpty()) {
-            int node = queue.poll();
-            System.out.print(node + " ");
+            int current = queue.dequeue();
+            System.out.print(current + " ");
 
-            for (int neighbor : adjList.get(node)) {
-                if (!visited[neighbor]) {
-                    visited[neighbor] = true;
-                    queue.offer(neighbor);
+            Node temp = adjList[current];
+
+            while (temp != null) {
+                if (!visited[temp.data]) {
+                    visited[temp.data] = true;
+                    queue.enqueue(temp.data);
                 }
+                temp = temp.next;
             }
         }
+        System.out.println();
     }
+}
 
+class Main {
     public static void main(String[] args) {
-        BFS graph = new BFS(6);
 
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 2);
-        graph.addEdge(1, 3);
-        graph.addEdge(1, 4);
-        graph.addEdge(2, 5);
+        BFS g = new BFS(5);
 
-        System.out.println("BFS starting from node 0:");
-        graph.bfs(0);
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 3);
+        g.addEdge(2, 4);
+
+        g.bfs(0);
     }
 }
