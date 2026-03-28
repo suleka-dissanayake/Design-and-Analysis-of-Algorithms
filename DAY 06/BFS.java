@@ -71,22 +71,29 @@ public class BFS {
         queue.enqueue(start);
 
         System.out.print("BFS Traversal: ");
-
-        while (!queue.isEmpty()) {
-            int current = queue.dequeue();
-            System.out.print(current + " ");
-
-            Node temp = adjList[current];
-
-            while (temp != null) {
-                if (!visited[temp.data]) {
-                    visited[temp.data] = true;
-                    queue.enqueue(temp.data);
-                }
-                temp = temp.next;
-            }
-        }
+        bfsRecursive(queue, visited);
         System.out.println();
+    }
+
+    private void bfsRecursive(Queue queue, boolean[] visited) {
+        if (queue.isEmpty()) {
+            return;
+        }
+
+        int current = queue.dequeue();
+        System.out.print(current + " ");
+
+        Node temp = adjList[current];
+
+        while (temp != null) {
+            if (!visited[temp.data]) {
+                visited[temp.data] = true;
+                queue.enqueue(temp.data);
+            }
+            temp = temp.next;
+        }
+
+        bfsRecursive(queue, visited);
     }
 }
 
