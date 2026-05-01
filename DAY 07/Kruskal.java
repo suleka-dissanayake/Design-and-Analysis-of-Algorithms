@@ -14,7 +14,7 @@ class Kruskal{
         parent[rootA] = rootB;
     }
 
-    public static void kruskal(int V, int[][] cost) {
+    static void kruskal(int V, int[][] cost) {
         parent = new int[V];
 
         for (int i = 0; i < V; i++) {

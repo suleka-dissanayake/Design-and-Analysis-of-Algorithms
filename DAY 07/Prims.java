@@ -1,7 +1,7 @@
 class Prims{
     static final int INF = 999999;
 
-    public static void prim(int V, int[][] G) {
+    static void prim(int V, int[][] G) {
         boolean[] selected = new boolean[V];
         selected[0] = true;
 
