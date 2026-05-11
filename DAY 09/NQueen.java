@@ -1,4 +1,4 @@
-public class NQueen {
+class NQueen {
     static final int N = 4;
 
     static void printBoard(int board[][]) {
