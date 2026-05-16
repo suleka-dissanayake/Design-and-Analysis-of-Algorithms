@@ -2,7 +2,7 @@ class Job {
     String id;
     int deadline, profit;
 
-    Job(String id, int deadline, int profit) {
+    public Job(String id, int deadline, int profit) {
         this.id = id;
         this.deadline = deadline;
         this.profit = profit;
@@ -10,7 +10,7 @@ class Job {
 }
 
 class JobSequence {
-    public static void sortJobs(Job[] jobs, int n) {
+    static void sortJobs(Job[] jobs, int n) {
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (jobs[j].profit < jobs[j + 1].profit) {
@@ -22,7 +22,7 @@ class JobSequence {
         }
     }
 
-    public static void scheduleJobs(Job[] jobs, int n) {
+    static void scheduleJobs(Job[] jobs, int n) {
         sortJobs(jobs, n);
 
         int maxD = 0;
