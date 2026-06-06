@@ -4,7 +4,7 @@ class Item {
     int weight, profit;
     double ratio;
     
-    Item(int weight, int profit) {
+    public Item(int weight, int profit) {
         this.weight = weight;
         this.profit = profit;
         this.ratio = (double) profit / weight;
@@ -12,7 +12,6 @@ class Item {
 }
 
 class FractionalKnapsack { 
-    
     static double solveKnapsack(int[] weights, int[] profits, int capacity) {
         int n = weights.length;
         Item[] items = new Item[n];

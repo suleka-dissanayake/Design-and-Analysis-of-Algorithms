@@ -99,7 +99,6 @@ public class BFS {
 
 class Main {
     public static void main(String[] args) {
-
         BFS g = new BFS(5);
 
         g.addEdge(0, 1);

@@ -1,5 +1,5 @@
 class InsertionSort {
-    public int[] sort(int[] datalist){
+    static int[] sort(int[] datalist){
         int n = datalist.length;
 
         for (int i = 0; i < n; i++) {
@@ -17,8 +17,7 @@ class InsertionSort {
 
     public static void main(String[] args) {
         int[] data = {5, 1, 3, 2, 4, 9, 10, 7, 6, 8};
-        InsertionSort sorter = new InsertionSort();
-        int[] sorted = sorter.sort(data);
+        int[] sorted = sort(data);
 
         System.out.print("Sorted data: ");
         for(int num : sorted){

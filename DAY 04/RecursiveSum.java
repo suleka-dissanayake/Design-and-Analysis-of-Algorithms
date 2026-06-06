@@ -12,7 +12,7 @@ class RecursiveSum{
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter first number: ");
         int firstNum = sc.nextInt();
-        System.out.print("Enter first number: ");
+        System.out.print("Enter second number: ");
         int secondNum = sc.nextInt();
         System.out.println("Sum is " + sumBetweenTwo(firstNum, secondNum));
     }
