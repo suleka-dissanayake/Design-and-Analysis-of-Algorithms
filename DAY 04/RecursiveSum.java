@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 class RecursiveSum{
     static int sumBetweenTwo(int a, int b) {
-        if (b > a) {
+        if (b > a)
             return b + sumBetweenTwo(a, b - 1);
-        }
+
         return b;
     }
 
