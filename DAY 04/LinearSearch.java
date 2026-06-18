@@ -1,11 +1,11 @@
 class LinearSearch{
     static int resursiveLinearSearch(int[] arr, int target, int index){
-        if (index == arr.length) {
+        if (index == arr.length)
             return -1;
-        }
-        if (arr[index] == target) {
+
+        if (arr[index] == target)
             return index;
-        }
+
         return resursiveLinearSearch(arr, target, index + 1);
     }
 
